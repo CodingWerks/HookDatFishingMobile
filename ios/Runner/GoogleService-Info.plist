@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyBO-flfkmDcI3PE5ZhkGX5IKEPxRkaTfyQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>975608396625</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.hookdatfishing</string>
+	<key>PROJECT_ID</key>
+	<string>hook-dat-fishing-9yqtja</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hook-dat-fishing-9yqtja.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:975608396625:ios:b91f72e21d1caee6d2f170</string>
+</dict>
+</plist>
