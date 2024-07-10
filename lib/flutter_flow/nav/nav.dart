@@ -70,21 +70,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? const CharterListWidget()
-          : const CreateAccountWidget(),
+      errorBuilder: (context, state) =>
+          appStateNotifier.loggedIn ? const CharterListWidget() : const LandingPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
               ? const CharterListWidget()
-              : const CreateAccountWidget(),
-        ),
-        FFRoute(
-          name: 'charterList',
-          path: '/charterList',
-          builder: (context, params) => const CharterListWidget(),
+              : const LandingPageWidget(),
         ),
         FFRoute(
           name: 'CreateAccount',
@@ -100,6 +94,28 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'verificationPage',
           path: '/verificationPage',
           builder: (context, params) => const VerificationPageWidget(),
+        ),
+        FFRoute(
+          name: 'charterList',
+          path: '/charterList',
+          builder: (context, params) => const CharterListWidget(),
+        ),
+        FFRoute(
+          name: 'charterDetails',
+          path: '/charterDetails',
+          builder: (context, params) => CharterDetailsWidget(
+            details: params.getParam(
+              'details',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['charterDetails'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'LandingPage',
+          path: '/landingPage',
+          builder: (context, params) => const LandingPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -270,7 +286,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/createAccount';
+            return '/landingPage';
           }
           return null;
         },

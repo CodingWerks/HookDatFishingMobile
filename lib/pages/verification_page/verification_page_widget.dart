@@ -21,6 +21,9 @@ class _VerificationPageWidgetState extends State<VerificationPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => VerificationPageModel());
+
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'verificationPage'});
   }
 
   @override
@@ -83,6 +86,31 @@ class _VerificationPageWidgetState extends State<VerificationPageWidget> {
                           ],
                         ),
                       ),
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                'Verify It\'s You',
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Open Sans',
+                                      color:
+                                          FlutterFlowTheme.of(context).accent1,
+                                      fontSize: 24.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -90,15 +118,16 @@ class _VerificationPageWidgetState extends State<VerificationPageWidget> {
                           Expanded(
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 40.0, 0.0, 40.0),
+                                  0.0, 20.0, 0.0, 40.0),
                               child: Text(
-                                'Please check your email! Once you receive an email, click the link inside of email, then return here and tap click to complete button below and your done!',
+                                'Please check your email! Once you receive an email, click the link inside of email, then return here, tap the button below and you are ready!',
+                                textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Open Sans',
-                                      color:
-                                          FlutterFlowTheme.of(context).accent1,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w300,
@@ -114,8 +143,8 @@ class _VerificationPageWidgetState extends State<VerificationPageWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           FFButtonWidget(
-                            onPressed: () async {
-                              context.pushNamed('charterList');
+                            onPressed: () {
+                              print('Button pressed ...');
                             },
                             text: 'Click To Complete',
                             options: FFButtonOptions(

@@ -5,7 +5,7 @@
 
 
     <application
-        android:label="HookDatFishing"
+        android:label="Hook Dat Fishing"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">

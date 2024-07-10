@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'account_login_model.dart';
 export 'account_login_model.dart';
@@ -23,6 +24,8 @@ class _AccountLoginWidgetState extends State<AccountLoginWidget> {
     super.initState();
     _model = createModel(context, () => AccountLoginModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'AccountLogin'});
     _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
 
@@ -107,7 +110,7 @@ class _AccountLoginWidgetState extends State<AccountLoginWidget> {
                                       fontFamily: 'Open Sans',
                                       color:
                                           FlutterFlowTheme.of(context).accent1,
-                                      fontSize: 28.0,
+                                      fontSize: 24.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -140,13 +143,13 @@ class _AccountLoginWidgetState extends State<AccountLoginWidget> {
                                     autofillHints: const [AutofillHints.email],
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      labelText: 'Email',
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
                                             fontFamily: 'Open Sans',
                                             letterSpacing: 0.0,
                                           ),
+                                      hintText: 'Email',
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: FlutterFlowTheme.of(context)
@@ -159,7 +162,7 @@ class _AccountLoginWidgetState extends State<AccountLoginWidget> {
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                              .tertiary,
                                           width: 2.0,
                                         ),
                                         borderRadius:
@@ -186,6 +189,12 @@ class _AccountLoginWidgetState extends State<AccountLoginWidget> {
                                       filled: true,
                                       fillColor: FlutterFlowTheme.of(context)
                                           .primaryBackground,
+                                      prefixIcon: Icon(
+                                        Icons.mail_outline,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 24.0,
+                                      ),
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -212,13 +221,13 @@ class _AccountLoginWidgetState extends State<AccountLoginWidget> {
                                     autofillHints: const [AutofillHints.password],
                                     obscureText: !_model.passwordVisibility,
                                     decoration: InputDecoration(
-                                      labelText: 'Password',
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
                                             fontFamily: 'Open Sans',
                                             letterSpacing: 0.0,
                                           ),
+                                      hintText: 'Password',
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: FlutterFlowTheme.of(context)
@@ -231,7 +240,7 @@ class _AccountLoginWidgetState extends State<AccountLoginWidget> {
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                              .tertiary,
                                           width: 2.0,
                                         ),
                                         borderRadius:
@@ -258,6 +267,12 @@ class _AccountLoginWidgetState extends State<AccountLoginWidget> {
                                       filled: true,
                                       fillColor: FlutterFlowTheme.of(context)
                                           .primaryBackground,
+                                      prefixIcon: Icon(
+                                        Icons.lock_outlined,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 24.0,
+                                      ),
                                       suffixIcon: InkWell(
                                         onTap: () => setState(
                                           () => _model.passwordVisibility =
@@ -292,6 +307,9 @@ class _AccountLoginWidgetState extends State<AccountLoginWidget> {
                                     0.0, 0.0, 0.0, 16.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
+                                    logFirebaseEvent(
+                                        'ACCOUNT_LOGIN_PAGE_SIGN_IN_BTN_ON_TAP');
+                                    logFirebaseEvent('Button_auth');
                                     GoRouter.of(context).prepareAuthEvent();
 
                                     final user =
@@ -359,6 +377,16 @@ class _AccountLoginWidgetState extends State<AccountLoginWidget> {
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                             ),
+                                        mouseCursor: SystemMouseCursors.click,
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () async {
+                                            logFirebaseEvent(
+                                                'ACCOUNT_LOGIN_RichTextSpan_w5tsd4wq_ON_T');
+                                            logFirebaseEvent(
+                                                'RichTextSpan_navigate_to');
+
+                                            context.pushNamed('CreateAccount');
+                                          },
                                       )
                                     ],
                                     style: FlutterFlowTheme.of(context)

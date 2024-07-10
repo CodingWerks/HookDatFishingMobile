@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'charter_list_widget.dart' show CharterListWidget;
+import 'charter_details_widget.dart' show CharterDetailsWidget;
 import 'package:flutter/material.dart';
 
-class CharterListModel extends FlutterFlowModel<CharterListWidget> {
+class CharterDetailsModel extends FlutterFlowModel<CharterDetailsWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

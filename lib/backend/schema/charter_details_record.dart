@@ -55,6 +55,31 @@ class CharterDetailsRecord extends FirestoreRecord {
   double get taxRate => _taxRate ?? 0.0;
   bool hasTaxRate() => _taxRate != null;
 
+  // "startingPrice" field.
+  double? _startingPrice;
+  double get startingPrice => _startingPrice ?? 0.0;
+  bool hasStartingPrice() => _startingPrice != null;
+
+  // "charterTimes" field.
+  String? _charterTimes;
+  String get charterTimes => _charterTimes ?? '';
+  bool hasCharterTimes() => _charterTimes != null;
+
+  // "bookingStart" field.
+  DateTime? _bookingStart;
+  DateTime? get bookingStart => _bookingStart;
+  bool hasBookingStart() => _bookingStart != null;
+
+  // "bookingEnd" field.
+  DateTime? _bookingEnd;
+  DateTime? get bookingEnd => _bookingEnd;
+  bool hasBookingEnd() => _bookingEnd != null;
+
+  // "charterID" field.
+  int? _charterID;
+  int get charterID => _charterID ?? 0;
+  bool hasCharterID() => _charterID != null;
+
   void _initializeFields() {
     _charterName = snapshotData['charterName'] as String?;
     _charterDescription = snapshotData['charterDescription'] as String?;
@@ -64,6 +89,11 @@ class CharterDetailsRecord extends FirestoreRecord {
     _userRef = snapshotData['userRef'] as DocumentReference?;
     _ratingSummary = castToType<double>(snapshotData['ratingSummary']);
     _taxRate = castToType<double>(snapshotData['taxRate']);
+    _startingPrice = castToType<double>(snapshotData['startingPrice']);
+    _charterTimes = snapshotData['charterTimes'] as String?;
+    _bookingStart = snapshotData['bookingStart'] as DateTime?;
+    _bookingEnd = snapshotData['bookingEnd'] as DateTime?;
+    _charterID = castToType<int>(snapshotData['charterID']);
   }
 
   static CollectionReference get collection =>
@@ -109,6 +139,11 @@ Map<String, dynamic> createCharterDetailsRecordData({
   DocumentReference? userRef,
   double? ratingSummary,
   double? taxRate,
+  double? startingPrice,
+  String? charterTimes,
+  DateTime? bookingStart,
+  DateTime? bookingEnd,
+  int? charterID,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -120,6 +155,11 @@ Map<String, dynamic> createCharterDetailsRecordData({
       'userRef': userRef,
       'ratingSummary': ratingSummary,
       'taxRate': taxRate,
+      'startingPrice': startingPrice,
+      'charterTimes': charterTimes,
+      'bookingStart': bookingStart,
+      'bookingEnd': bookingEnd,
+      'charterID': charterID,
     }.withoutNulls,
   );
 
@@ -139,7 +179,12 @@ class CharterDetailsRecordDocumentEquality
         e1?.charterAddress == e2?.charterAddress &&
         e1?.userRef == e2?.userRef &&
         e1?.ratingSummary == e2?.ratingSummary &&
-        e1?.taxRate == e2?.taxRate;
+        e1?.taxRate == e2?.taxRate &&
+        e1?.startingPrice == e2?.startingPrice &&
+        e1?.charterTimes == e2?.charterTimes &&
+        e1?.bookingStart == e2?.bookingStart &&
+        e1?.bookingEnd == e2?.bookingEnd &&
+        e1?.charterID == e2?.charterID;
   }
 
   @override
@@ -151,7 +196,12 @@ class CharterDetailsRecordDocumentEquality
         e?.charterAddress,
         e?.userRef,
         e?.ratingSummary,
-        e?.taxRate
+        e?.taxRate,
+        e?.startingPrice,
+        e?.charterTimes,
+        e?.bookingStart,
+        e?.bookingEnd,
+        e?.charterID
       ]);
 
   @override
